@@ -1,0 +1,32 @@
+{
+  "name": "markdown-oas",
+  "version": "2.0.0",
+  "description": "Generate markdown API docs (OpenAPI).",
+  "main": "index.js",
+  "repository": "git@github.com:ocular-d/markdown-oas.git",
+  "author": "sven <sven@ocular-d.tech>",
+  "license": "MIT",
+  "scripts": {
+    "package:update": "ncu -u"
+  },
+  "dependencies": {
+    "chalk-printer": "^1.1.2",
+    "columnify": "^1.5.4",
+    "fs-extra": "^8.1.0",
+    "js-yaml": "^3.13.1",
+    "meow": "^6.0.0",
+    "xml-comment-api": "^1.0.1"
+  },
+  "bin": {
+    "markdown-swagger": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE",
+    "yarn.lock"
+  ],
+  "devDependencies": {
+    "npm-check-updates": "^4.0.1"
+  }
+}
