@@ -1,6 +1,6 @@
 {
   "name": "markdown-oas",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Generate markdown API docs (OpenAPI).",
   "main": "index.js",
   "repository": "git@github.com:ocular-d/markdown-oas.git",

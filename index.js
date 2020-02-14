@@ -12,18 +12,18 @@ const xmlComment = require('xml-comment-api')
 // Command line definition.
 const cli = command(`
   Usage
-    $ markdown-swagger <swagger.yaml> <markdown.md>
+    $ markdown-oas <swagger.yaml> <markdown.md>
 
   Examples
-    $ markdown-swagger ./api/swagger/swagger.yaml ./README.md
+    $ markdown-oas ./api/swagger/swagger.yaml ./README.md
 `)
 
 const [source, target] = cli.input
 
 Promise.resolve()
-  .then(() => source || Promise.reject('The swagger source file is required.'))
+  .then(() => source || Promise.reject('The OAS source file is required.'))
   .then(() => target || Promise.reject('The markdown target file is required.'))
-  .then(() => readSwaggerFile(source))
+  .then(() => readOASFile(source))
   .then((swagger) => generateTable(swagger))
   .then((table) => updateMarkdownTable(table, target))
   .catch((error) => {
@@ -31,7 +31,7 @@ Promise.resolve()
     process.exit(1)
   })
 
-function readSwaggerFile(source) {
+function readOASFile(source) {
   return fs.readFile(source, 'utf-8')
     .then((data) => yaml.safeLoad(data))
     .catch((error) => {
@@ -92,7 +92,7 @@ function find(a = [], b = []) {
 function updateMarkdownTable(table, target) {
   return fs.readFile(target, 'utf-8')
     .then((data) => {
-      const updated = xmlComment(data).replace('markdown-swagger', `\n${table}\n`).contents()
+      const updated = xmlComment(data).replace('markdown-oas', `\n${table}\n`).contents()
       return fs.writeFile(target, updated)
     })
     .catch((error) => {
